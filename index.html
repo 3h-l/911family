@@ -26,7 +26,6 @@
       border: 3px solid #fff;
       filter: grayscale(100%);
     }
-    /* نخفي عنصر الصوت */
     audio {
       display: none;
     }
@@ -49,9 +48,23 @@
   
   <p><b>Hacked by:</b> BinZayed , SaDDaM , Azzam , Nahyan</p>
 
-  <!-- تشغيل الصوت بدون عرض -->
-  <audio autoplay>
+  <!-- Audio element (hidden) -->
+  <audio id="bg-audio">
     <source src="https://cdn.discordapp.com/attachments/1105145629384122410/1253464502519730216/3mkLamarr.mp3?ex=67f79209&is=67f64089&hm=e87458c794e501bb8d2ee4a0462f5ff76ac22791cd28cfffd5c26c2b53f2608c&" type="audio/mp3">
   </audio>
+
+  <script>
+    const audio = document.getElementById("bg-audio");
+
+    function playAudioOnce() {
+      audio.play().catch(() => {});
+      document.removeEventListener("click", playAudioOnce);
+      document.removeEventListener("mousemove", playAudioOnce);
+    }
+
+    // أول تفاعل من المستخدم يفعّل الصوت
+    document.addEventListener("click", playAudioOnce);
+    document.addEventListener("mousemove", playAudioOnce);
+  </script>
 </body>
 </html>
